@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3b5998;
+    color: white;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Left Section */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    font-size: 28px;
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+  }
+  
+  .search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+  }
+  
+  .search-bar button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #3b5998;
+  }
+  
+  /* Center Section */
+  .navbar-center {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-icon {
+    font-size: 20px;
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-icon:hover, .nav-icon.active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Right Section */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .profile span {
+    font-size: 14px;
+  }
+  
+  .nav-icon {
+    cursor: pointer;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    width: 150px;
+    z-index: 1;
+    display: none; /* Hidden by default, will be shown with Angular */
+  }
+  
+  .dropdown-menu a {
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .navbar-left .search-bar {
+      display: none;
+    }
+  
+    .navbar-center {
+      justify-content: space-between;
+    }
+  
+    .profile span {
+      display: none;
+    }
+  }
+  
