@@ -1,1 +1,88 @@
-<p>register works!</p>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form [formGroup]="registerForm" class="login100-form validate-form">
+                <span class="login100-form-title p-b-26">Welcome</span>
+                <span class="login100-form-title p-b-48">
+                  <i class="zmdi zmdi-font"></i>
+                </span>
+              
+                <div class="wrap-input100 validate-input" data-validate="Enter First Name">
+                  <input class="input100" type="text" name="firstName" formControlName="FirstName" placeholder="First Name">
+                  
+                </div>
+                <span *ngIf="registerForm.get('FirstName')?.touched && registerForm.get('FirstName')?.invalid" class="text-danger">
+                    First Name is required.
+                  </span>
+                  
+                <div class="wrap-input100 validate-input" data-validate="Enter Last Name">
+                  <input class="input100" type="text" name="lastName" formControlName="LastName" placeholder="Last Name">
+                 
+                </div>
+                <span *ngIf="registerForm.get('LastName')?.touched && registerForm.get('LastName')?.invalid" class="text-danger">
+                    Last Name is required.
+                  </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                  <input class="input100" type="text" name="email" formControlName="Email" placeholder="Email">
+                  
+                </div>
+                <span *ngIf="registerForm.get('Email')?.touched && registerForm.get('Email')?.invalid" class="text-danger">
+                    <span *ngIf="registerForm.get('Email')?.hasError('required')">Email is required.</span>
+                    <span *ngIf="registerForm.get('Email')?.hasError('email')">Enter a valid email.</span>
+                  </span>
+                <div class="wrap-input100 validate-input" data-validate="Enter Mobile Number">
+                  <input class="input100" type="text" name="mobileNumber" formControlName="MobileNumber" placeholder="Mobile Number">
+                  
+                </div>
+                <span *ngIf="registerForm.get('MobileNumber')?.touched && registerForm.get('MobileNumber')?.invalid" class="text-danger">
+                    <span *ngIf="registerForm.get('MobileNumber')?.hasError('required')">Mobile number is required.</span>
+                    <span *ngIf="registerForm.get('MobileNumber')?.hasError('pattern')">Enter a valid mobile number (10 digits).</span>
+                  </span>
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <!-- Span for the eye icon to toggle password visibility -->
+                    <span class="btn-show-pass" (click)="togglePasswordVisibility()">
+                      <i class="zmdi zmdi-eye" *ngIf="!passwordVisible"></i>
+                      <i class="zmdi zmdi-eye-off" *ngIf="passwordVisible"></i> <!-- Eye off icon when password is visible -->
+                    </span>
+                    
+                    <!-- Password input field that toggles between 'password' and 'text' based on passwordVisible -->
+                    <input class="input100"  [type]="passwordVisible ? 'text' : 'password'"  name="pass"  formControlName="Password"  placeholder="Password">
+                   
+                  </div>
+                  <span *ngIf="registerForm.get('Password')?.touched && registerForm.get('Password')?.invalid" class="text-danger">
+                    <span *ngIf="registerForm.get('Password')?.hasError('required')">Password is required.</span>
+                    <br>
+                    <span *ngIf="registerForm.get('Password')?.hasError('minlength')">Password must be at least 8 characters.</span>
+                    <br>
+                    <span *ngIf="registerForm.get('Password')?.hasError('pattern')">Password must contain at least one special character.</span>
+                    <br>
+                    <span *ngIf="registerForm.get('Password')?.hasError('pattern')">Password must contain at least one upper case character.</span>
+                    <br>
+                    <span *ngIf="registerForm.get('Password')?.hasError('pattern')">Password must contain at least one lower case character.</span>
+                    <br>
+                    <span *ngIf="registerForm.get('Password')?.hasError('pattern')">Password must contain at least one number</span>
+                  </span>
+              
+                <div class="container-login100-form-btn">
+                  <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn" type="submit"  (click)="submit()">
+                      Register
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="text-center p-t-115">
+                  <span class="txt1">Do you have an account?</span>
+                  <a class="txt2" routerLink="security/sign-in">Sign In</a>
+                </div>
+              </form>
+              
+        </div>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+

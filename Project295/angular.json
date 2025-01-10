@@ -22,14 +22,26 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assests/Authintication/images/icons/favicon.ico"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "src/assets/Admin/css/styles.min.css" ,
-              "src/styles.css"       
-                 ],
+              "src/styles.css",
+              "src/assets/Authintication/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/Authintication/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/Authintication/fonts/iconic/css/material-design-iconic-font.min.css",
+              "src/assets/Authintication/vendor/animate/animate.css",
+              "src/assets/Authintication/vendor/css-hamburgers/hamburgers.min.css",
+              "src/assets/Authintication/vendor/animsition/css/animsition.min.css",
+              "src/assets/Authintication/vendor/select2/select2.min.css",
+              "src/assets/Authintication/vendor/daterangepicker/daterangepicker.css",
+              "src/assets/Authintication/css/util.css",
+              "src/assets/Authintication/css/main.css",
+              "node_modules/ngx-toastr/toastr.css"
+            ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/Admin/libs/jquery/dist/jquery.min.js",
@@ -38,7 +50,16 @@
               "src/assets/Admin/js/app.min.js",
               "src/assets/Admin/libs/apexcharts/dist/apexcharts.min.js",
               "src/assets/Admin/libs/simplebar/dist/simplebar.js",
-               "src/assets/Admin/js/dashboard.js"
+               "src/assets/Admin/js/dashboard.js",
+               "src/assets/Authintication/vendor/jquery/jquery-3.2.1.min.js",
+               "src/assets/Authintication/vendor/animsition/js/animsition.min.js",
+               "src/assets/Authintication/vendor/bootstrap/js/popper.js",
+               "src/assets/Authintication/vendor/bootstrap/js/bootstrap.min.js",
+               "src/assets/Authintication/vendor/select2/select2.min.js",
+               "src/assets/Authintication/vendor/daterangepicker/moment.min.js",
+               "src/assets/Authintication/vendor/daterangepicker/daterangepicker.js",
+               "src/assets/Authintication/vendor/countdowntime/countdowntime.js",
+               "src/assets/Authintication/js/main.js"
 
             ]
           },
@@ -107,5 +128,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
