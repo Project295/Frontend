@@ -14,7 +14,7 @@
                 <span *ngIf="registerForm.get('FirstName')?.touched && registerForm.get('FirstName')?.invalid" class="text-danger">
                     First Name is required.
                   </span>
-                  
+
                 <div class="wrap-input100 validate-input" data-validate="Enter Last Name">
                   <input class="input100" type="text" name="lastName" formControlName="LastName" placeholder="Last Name">
                  
@@ -40,13 +40,12 @@
                     <span *ngIf="registerForm.get('MobileNumber')?.hasError('pattern')">Enter a valid mobile number (10 digits).</span>
                   </span>
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <!-- Span for the eye icon to toggle password visibility -->
                     <span class="btn-show-pass" (click)="togglePasswordVisibility()">
                       <i class="zmdi zmdi-eye" *ngIf="!passwordVisible"></i>
-                      <i class="zmdi zmdi-eye-off" *ngIf="passwordVisible"></i> <!-- Eye off icon when password is visible -->
+                      <i class="zmdi zmdi-eye-off" *ngIf="passwordVisible"></i> 
                     </span>
                     
-                    <!-- Password input field that toggles between 'password' and 'text' based on passwordVisible -->
+
                     <input class="input100"  [type]="passwordVisible ? 'text' : 'password'"  name="pass"  formControlName="Password"  placeholder="Password">
                    
                   </div>
@@ -75,7 +74,7 @@
               
                 <div class="text-center p-t-115">
                   <span class="txt1">Do you have an account?</span>
-                  <a class="txt2" routerLink="security/sign-in">Sign In</a>
+                  <a class="txt2" routerLink="/security/sign-in">Sign In</a>
                 </div>
               </form>
               

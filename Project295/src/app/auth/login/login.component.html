@@ -1,7 +1,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form">
+            <form [formGroup]="loginForm" class="login100-form validate-form">
                 <span class="login100-form-title p-b-26">
                     Welcome
                 </span>
@@ -10,22 +10,27 @@
                 </span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                    <input class="input100" type="text" name="email">
-                    <span class="focus-input100" data-placeholder="Email"></span>
+                    <input class="input100" type="text" name="email" formControlName="Email" placeholder="Email" >
                 </div>
+                <span *ngIf="loginForm.get('Email')?.touched && loginForm.get('Email')?.invalid" class="text-danger">
+                    <span *ngIf="loginForm.get('Email')?.hasError('required')">Email is required.</span>
+                    <span *ngIf="loginForm.get('Email')?.hasError('email')">Enter a valid email.</span>
+                  </span>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <span class="btn-show-pass">
-                        <i class="zmdi zmdi-eye"></i>
-                    </span>
-                    <input class="input100" type="password" name="pass">
-                    <span class="focus-input100" data-placeholder="Password"></span>
+                    <span class="btn-show-pass" (click)="togglePasswordVisibility()">
+                        <i class="zmdi zmdi-eye" *ngIf="!passwordVisible"></i>
+                        <i class="zmdi zmdi-eye-off" *ngIf="passwordVisible"></i> <!-- Eye off icon when password is visible -->
+                      </span>
+                    <input class="input100" [type]="passwordVisible ? 'text' : 'password'" name="Password" formControlName="Password" placeholder="Password">
                 </div>
-
+                <span *ngIf="loginForm.get('Password')?.touched && loginForm.get('Password')?.invalid" class="text-danger">
+                    <span *ngIf="loginForm.get('Password')?.hasError('required')">Password is required.</span>
+                  </span>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
+                        <button class="login100-form-btn" (click)="login()">
                             Login
                         </button>
                     </div>

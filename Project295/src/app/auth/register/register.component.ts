@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup ,FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
- constructor(private toastr : ToastrService , private authService : AuthService) {
+ constructor(private toastr : ToastrService , private authService : AuthService, private router :Router) {
   
  }
   registerForm : FormGroup = new FormGroup({
@@ -31,14 +32,25 @@ export class RegisterComponent implements OnInit {
   togglePasswordVisibility(){
     this.passwordVisible = ! this.passwordVisible;
   }
-  submit(){
-    if(this.registerForm.valid)
-    {
-       this.authService.register(this.registerForm.value)
-    }
-    else{
+  submit() {
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).subscribe(
+        (result: any) => {
+          if (result && result.message) {
+            this.toastr.success(result.message); 
+            this.router.navigate(['/security/sign-in']);
+          }
+        },
+        error => {
+          const errorMessage = error.error?.message;
+           this.toastr.error(errorMessage);
+          
+        }
+      );
+    } else {
       this.registerForm.markAllAsTouched();
     }
   }
-
+  
+  
 }
