@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       timeOut :5000,
       positionClass:'toast-top-right',
       preventDuplicates:true,
-    })
+    }),
+    RouterModule
     
   ],
   exports: [
@@ -30,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule
     
   ]
 })
