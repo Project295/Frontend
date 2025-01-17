@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ContactComponent,
     HomeComponent,
     ProfileComponent,
+    OtherprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
     BrowserAnimationsModule
 
   ],
