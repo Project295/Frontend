@@ -1,0 +1,57 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+    <div class="body-wrapper">
+        <div class="container-fluid">
+            <div class="table-container">
+                <!-- Complaints Admin Table -->
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Complainant's name</th>
+                            <th>Complaining</th>
+                            <th>Post Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of admin.Complain">
+                            <td>{{ obj.complainantFirstName }} {{ obj.complainantLastName }}</td>
+                            <td>{{ obj.complainDiscription }}</td>
+                            <td [ngClass]="obj.isBlocked ? 'text-danger' : 'text-success'">
+                                {{ obj.isBlocked ? 'Blocked' : 'Active' }}
+                              </td>
+                            <td class="actions">
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#complaintDetailsModal" (click)="viewDetails(obj)">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Complaint Details Modal -->
+                <div class="modal fade" id="complaintDetailsModal" tabindex="-1" aria-labelledby="complaintDetailsLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="complaintDetailsLabel">Complaint Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Full Name:</strong> {{ selectedComplaint?.firstName }} {{ selectedComplaint?.lastName }}</p>
+                                <p><strong>Post:</strong> {{ selectedComplaint?.contant }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" (click)="acceptComplaint(selectedComplaint?.postId,selectedComplaint?.isBlocked)" data-bs-dismiss="modal">
+                                    Accept Complaint
+                                </button>
+                                <button type="button" class="btn btn-danger" (click)="rejectComplaint(selectedComplaint?.complainId)" data-bs-dismiss="modal">
+                                    Reject Complaint
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.table-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.search-box {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-box input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.search-box input:focus {  
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+}
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.user-table thead {
+    background-color: #007bff;
+    color: #fff;
+}
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.user-table tr:hover {
+    background-color: #f1f7ff;
+}
+.actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.actions .edit {
+    background-color: #28a745;
+    color: white;
+}
+.actions .delete {
+    background-color: #dc3545;
+    color: white;
+}
+.actions .edit:hover {
+    background-color: #218838;
+}
+.actions .delete:hover {
+    background-color: #c82333;
+}
+
+  .custom-dialog-container {
+    background-color: #f9f9f9; 
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333; 
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .dialog-content {
+    font-size: 16px;
+    color: #555; 
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+  }
+  
+  .yes-button {
+    background-color: #d32f2f; 
+    color: white;
+    font-weight: bold;
+  }
+  
+  .yes-button:hover {
+    background-color: #b71c1c; 
+  }
+  
+  .no-button {
+    background-color: #1976d2; 
+    color: white;
+    font-weight: bold;
+  }
+  
+  .no-button:hover {
+    background-color: #0d47a1; 
+  }
+  .btn {
+    margin-right: 10px;
+  }
+  .table-container {
+    margin-top: -70px !important;
+  }
+
+
+
+.dialog-container {
+  width: 350px !important;
+  padding: 12px !important;
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.dialog-form {
+  margin: 16px 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}

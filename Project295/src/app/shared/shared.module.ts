@@ -4,9 +4,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -24,7 +29,14 @@ import { RouterModule } from '@angular/router';
       positionClass:'toast-top-right',
       preventDuplicates:true,
     }),
-    RouterModule
+    MatDialogModule,
+    MatSlideToggleModule,
+    RouterModule,
+    MatButtonModule,
+     MatDividerModule,
+     MatFormFieldModule,
+      MatIconModule,
+      MatInputModule
     
   ],
   exports: [
@@ -32,8 +44,14 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
-    
+    RouterModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatButtonModule, 
+    MatDividerModule,
+     MatIconModule,
+     MatFormFieldModule,
+     MatInputModule
   ]
 })
 export class SharedModule { }

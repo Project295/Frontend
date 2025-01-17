@@ -1,0 +1,85 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+<div class="body-wrapper">
+    <div class="container-fluid">
+          <div class="table-container">
+            
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="search-box" style="flex: 1; max-width: 30%;">
+                  <input type="text" placeholder="Search by skill" style="width: 100%;">
+                </div>
+                <button type="button" class="btn btn-success" style="margin-left: auto;" (click)="openAddSkillDialog()" >Add Skill</button>
+              </div>
+              
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Skill Name</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr  *ngFor="let obj of admin.skills">
+                          <td>{{obj.skillName}}</td>
+                          <td class="actions">
+                            <button type="button" class="btn btn-info" (click)="openEditSkillDialog(obj)">Edit</button>
+                            <button type="button" class="btn btn-danger" (click)="openDeleteDailog(obj)" >Delete</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Add Skill  -->
+<ng-template #callAddSkillDailog>
+    <div class="dialog-container">
+      <h1 mat-dialog-title class="dialog-title">Add Skill</h1>
+      <form [formGroup]="skillForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Skill Name</mat-label>
+          <input matInput formControlName="SkillName" placeholder="Enter skill name" />
+          <mat-error *ngIf="skillForm.get('SkillName')?.invalid">
+            Skill Name is required.
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-raised-button color="primary" [disabled]="skillForm.invalid" (click)="saveSkill()">Save</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Edit Skill -->
+<ng-template #callEditSkillDailog>
+    <div class="dialog-container">
+      <h1 mat-dialog-title class="dialog-title">Edit Skill</h1>
+      <form [formGroup]="EditSkillForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Skill Name</mat-label>
+          <input type="text" matInput formControlName="SkillName" [(ngModel)]="pData.skillName" />
+          <mat-error *ngIf="EditSkillForm.get('SkillName')?.invalid">
+            Skill Name is required.
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-raised-button color="primary" [disabled]="EditSkillForm.invalid" (click)="EditSkill()">Save</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Delete Skill  -->
+
+<ng-template #callDeleteDailog>
+    <h1 mat-dialog-title class="dialog-title">Delete Skill </h1>
+    <div mat-dialog-content class="dialog-content">Are you sure you want to Delete this Skill ?</div>
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-raised-button color="primary" mat-dialog-close="yes" >Yes</button>
+      <button mat-raised-button color="warn" mat-dialog-close="no" >No</button>
+    </div>
+  </ng-template>
