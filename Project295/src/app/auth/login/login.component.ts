@@ -25,6 +25,7 @@ export class LoginComponent {
   }
   login(){
     if(this.loginForm.valid){
+      localStorage.clear();
       this.authService.login(this.loginForm.value).subscribe((result:any)=>{
        if(result){
         this.toastr.success(result.message)
@@ -35,7 +36,7 @@ export class LoginComponent {
 
         }
         else if(result.roleId ===2){
-          this.router.navigate(['/home']);
+          this.router.navigate(['/profile']);
         }
        }
       },err=>{

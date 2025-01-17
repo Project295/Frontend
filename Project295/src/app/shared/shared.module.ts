@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -24,7 +27,10 @@ import { RouterModule } from '@angular/router';
       positionClass:'toast-top-right',
       preventDuplicates:true,
     }),
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    MatButtonModule,
+
     
   ],
   exports: [
@@ -32,7 +38,11 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    MatButtonModule,
+
+    
     
   ]
 })
