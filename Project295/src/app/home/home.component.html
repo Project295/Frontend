@@ -1,9 +1,59 @@
 <app-navbar></app-navbar>
+       <!-- Search Form -->
+       <div class="search-form-container" style="margin-top: 73px; padding-top: 5px;">
+        <form class="search-form d-flex justify-content-center" style="height: 30px; margin-bottom: 5px;">
+            <div class="row d-flex justify-content-center" style="height: 30px;">
+                <!-- Name Input -->
+                <div style="width: 250px; margin: 5px;">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="searchName" placeholder="Enter name" style="height: 50px;">
+                    </div>
+                </div>
+                
+                <!-- Email Input -->
+                <div style="width: 250px; margin: 5px;">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="searchEmail" placeholder="Enter email" style="height: 50px;">
+                    </div>
+                </div>
+                
+                <!-- Category Dropdown -->
+                <div style="width: 200px; margin: 5px;">
+                    <div class="form-group">
+                        <select class="form-control" id="category" style="height: 50px;">
+                            <option value="">Select Category</option>
+                            <option value="Category 1">Category 1</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 3</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Status Dropdown -->
+                <div style="width: 200px; margin: 5px;">
+                    <div class="form-group">
+                        <select class="form-control" id="status" style="height: 50px;">
+                            <option value="">Select Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Search Button -->
+                <div style="width: 200px; margin: 5px;">
+                    <button type="submit" class="btn btn-primary btn-block" style="height: 50px;">Search</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
 <div class="container">
+    
     <div class="row justify-content-center">
         <div class="col-sm-9 col-sm-offset-2">
-        
-            <div class="row" style="margin-top: 30px;">
+    
+            <div class="row" >
                 
                 <div class="col-sm-12">
                     <div class="panel panel-white post">
