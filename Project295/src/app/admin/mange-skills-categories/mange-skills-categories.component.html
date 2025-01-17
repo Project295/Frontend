@@ -1,0 +1,88 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+<div class="body-wrapper">
+    <div class="container-fluid">
+          <div class="table-container">
+            
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="search-box" style="flex: 1; max-width: 30%;">
+                  <input type="text" placeholder="Search by Category" style="width: 100%;">
+                </div>
+                <button type="button" class="btn btn-success" style="margin-left: auto;" (click)="openAddCategoryDialog()" >Add Category</button>
+              </div>
+              
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Skills Categories</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr  *ngFor="let obj of admin.skillsCategory">
+                          <td>{{obj.skillsCategoryName}}</td>
+                          <td class="actions">
+                            <button type="button" class="btn btn-success" (click)="GoToSkills(obj.skillsCategoryId)">Add Skills</button>
+
+                            <button type="button" class="btn btn-info" (click)="openEditCategoryDialog(obj)">Edit</button>
+
+                              <button type="button" class="btn btn-danger" (click)="openDeleteDailog(obj.skillsCategoryId)" >Delete</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Add Category  -->
+<ng-template #callAddCategoryDailog>
+    <div class="dialog-container">
+      <h1 mat-dialog-title class="dialog-title">Add Category</h1>
+      <form [formGroup]="categoryForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Category Name</mat-label>
+          <input matInput formControlName="skillsCategoryName" placeholder="Enter category name" />
+          <mat-error *ngIf="categoryForm.get('skillsCategoryName')?.invalid">
+            Category Name is required.
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-raised-button color="primary" [disabled]="categoryForm.invalid" (click)="saveCategory()">Save</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Edit Category  -->
+<ng-template #callEditCategoryDailog>
+    <div class="dialog-container">
+      <h1 mat-dialog-title class="dialog-title">Edit Category</h1>
+      <form [formGroup]="EditcategoryForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Category Name</mat-label>
+          <input type="text" matInput formControlName="skillsCategoryName" [(ngModel)]="pData.skillsCategoryName" />
+          <mat-error *ngIf="EditcategoryForm.get('skillsCategoryName')?.invalid">
+            Category Name is required.
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-raised-button color="primary" [disabled]="EditcategoryForm.invalid" (click)="EditCategory()">Save</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Delete Category  -->
+
+<ng-template #callDeleteDailog>
+    <h1 mat-dialog-title class="dialog-title">Delete Category </h1>
+    <div mat-dialog-content class="dialog-content">Are you sure you want to Delete this Category ?</div>
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-raised-button color="primary" mat-dialog-close="yes" >Yes</button>
+      <button mat-raised-button color="warn" mat-dialog-close="no" >No</button>
+    </div>
+  </ng-template>
