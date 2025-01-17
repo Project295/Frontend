@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSpinnerModule
+    BrowserAnimationsModule
 
   ],
   providers: [],

@@ -1,0 +1,81 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+    <div class="body-wrapper">
+        <div class="container-fluid">
+            <div class="row justify-content-center" style="margin-top: -30px;">
+                <div class="col-lg-10">
+                    <h2 class="fw-bold mb-4">Profile</h2>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="profile-pic me-3">
+                            <img [src]="user.profileImage || 'assets/default-profile.png'" alt="Profile Picture"
+                                class="rounded-circle border" width="100" height="100">
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-1">{{ user.fullName }}</h4>
+                            <p class="text-muted mb-0">{{ user.email }}</p>
+                        </div>
+                        <button class="btn btn-primary ms-auto" (click)="editMode = true" *ngIf="!editMode">
+                            <i class="ti ti-edit"></i> Edit
+                        </button>
+                    </div>
+
+                    <!-- Profile View Mode -->
+                    <div *ngIf="!editMode">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>Full Name:</th>
+                                <td>{{ user.fullName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone:</th>
+                                <td>{{ user.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Role:</th>
+                                <td>{{ user.role }}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Profile Edit Mode -->
+                    <div *ngIf="editMode">
+                        <form (ngSubmit)="saveProfile()">
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="user.fullName" name="fullName">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" class="form-control" [(ngModel)]="user.phone" name="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Role</label>
+                                <select class="form-select" [(ngModel)]="user.role" name="role">
+                                    <option value="Admin">Admin</option>
+                                    <option value="User">User</option>
+                                </select>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-success"><i class="ti ti-check"></i> Save</button>
+                                <button type="button" class="btn btn-danger" (click)="editMode = false">
+                                    <i class="ti ti-close"></i> Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

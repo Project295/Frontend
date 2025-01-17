@@ -4,12 +4,19 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -31,6 +38,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatButtonModule,
 
+    MatDialogModule,
+    MatSlideToggleModule,
+    RouterModule,
+    MatButtonModule,
+     MatDividerModule,
+     MatFormFieldModule,
+      MatIconModule,
+      MatInputModule
     
   ],
   exports: [
@@ -44,6 +59,12 @@ import { MatButtonModule } from '@angular/material/button';
 
     
     
+    MatSlideToggleModule,
+    MatButtonModule, 
+    MatDividerModule,
+     MatIconModule,
+     MatFormFieldModule,
+     MatInputModule
   ]
 })
 export class SharedModule { }

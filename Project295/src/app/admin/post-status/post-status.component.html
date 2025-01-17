@@ -1,0 +1,87 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+<div class="body-wrapper">
+    <div class="container-fluid">
+          <div class="table-container">
+            
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="search-box" style="flex: 1; max-width: 30%;">
+                  <input type="text" placeholder="Search by Category" style="width: 100%;">
+                </div>
+                <button type="button" class="btn btn-success" style="margin-left: auto;" (click)="openAddPostStatusDialog()" >Add Category</button>
+              </div>
+              
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Post Status</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr  *ngFor="let obj of admin.postStatus">
+                          <td>{{obj.statusName}}</td>
+                          <td class="actions">
+
+                            <button type="button" class="btn btn-info" (click)="openEditPostStatusDialog(obj)">Edit</button>
+
+                              <button type="button" class="btn btn-danger" (click)="openDeleteDailog(obj.postStatusId)" >Delete</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- Add PostStatus  -->
+<ng-template #callAddPostStatusDailog>
+    <div class="dialog-container">
+      <h1 mat-dialog-title class="dialog-title">Add Post Status</h1>
+      <form [formGroup]="PostStatusForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Post Status Name</mat-label>
+          <input matInput formControlName="statusName" placeholder="Enter Post Status name" />
+          <mat-error *ngIf="PostStatusForm.get('statusName')?.invalid">
+            Post Status Name is required.
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-raised-button color="primary" [disabled]="PostStatusForm.invalid" (click)="saveCategory()">Save</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Edit PostStatus  -->
+<ng-template #callEditPostStatusDailog>
+    <div class="dialog-container">
+      <h1 mat-dialog-title class="dialog-title">Edit Post Status</h1>
+      <form [formGroup]="EditPostStatusForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Post Status Name</mat-label>
+          <input type="text" matInput formControlName="statusName" [(ngModel)]="pData.statusName" />
+          <mat-error *ngIf="EditPostStatusForm.get('statusName')?.invalid">
+            Post Status Name is required.
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-raised-button color="primary" [disabled]="EditPostStatusForm.invalid" (click)="EditCategory()">Save</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- Delete PostStatus  -->
+
+<ng-template #callDeleteDailog>
+    <h1 mat-dialog-title class="dialog-title">Delete Post Status </h1>
+    <div mat-dialog-content class="dialog-content">Are you sure you want to Delete this Post Status ?</div>
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-raised-button color="primary" mat-dialog-close="yes" >Yes</button>
+      <button mat-raised-button color="warn" mat-dialog-close="no" >No</button>
+    </div>
+  </ng-template>

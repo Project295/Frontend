@@ -1,0 +1,18 @@
+.table-wrapper {
+    margin: 20px auto;
+    max-width: 1200px;
+  }
+  .resolved-badge {
+    background-color: #198754;
+    color: white;
+  }
+  .unresolved-badge {
+    background-color: #dc3545;
+    color: white;
+  }
+  .action-btns button {
+    margin-right: 5px;
+  }
+  .modal-body {
+    word-wrap: break-word;
+  }

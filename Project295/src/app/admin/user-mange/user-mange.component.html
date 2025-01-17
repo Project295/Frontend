@@ -1,0 +1,47 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+<div class="body-wrapper">
+    <div class="container-fluid">
+          <div class="table-container">
+              <div class="search-box">
+                  <input  type="text" placeholder="Search by name, email, or role...">
+              </div>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Full Name</th>
+                          <th>Email</th>
+                          <th>Phone Number</th>
+                          <th>Role</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr  *ngFor="let obj of admin.Users">
+                          <td>{{ obj.firstName }} {{ obj.lastName }}</td>
+                          <td>{{ obj.userName }}</td>
+                          <td>{{ obj.phoneNumber }}</td>
+                          <td>{{ obj.roleName }}</td>
+                          <td [ngClass]="obj.isBlocked ? 'text-danger' : 'text-success'">
+                            {{ obj.isBlocked ? 'Blocked' : 'Active' }}
+                          </td>
+                          <td class="actions">
+                              <button class="delete" (click)="openBlockedDailog(obj)">{{ obj.isBlocked ? 'Unblock' : 'Block' }}</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+    </div>
+  </div>
+</div>
+<ng-template #callBlockedDailog>
+    <h1 mat-dialog-title class="dialog-title">Block User?</h1>
+    <div mat-dialog-content class="dialog-content">Are you sure you want to {{ this.pData.isBlocked ? 'Unblock' : 'Block' }} this User?</div>
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-raised-button color="primary" mat-dialog-close="yes" >Yes</button>
+      <button mat-raised-button color="warn" mat-dialog-close="no" >No</button>
+    </div>
+  </ng-template>

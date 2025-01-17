@@ -1,0 +1,57 @@
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <app-sidebar></app-sidebar>
+    <div class="body-wrapper">
+        <div class="container-fluid">
+            <div class="table-container">
+                <!-- Contact Us Admin Table -->
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let obj of admin.contactUs">
+                            <td>{{obj.name}}</td>
+                            <td>{{obj.email}}</td>
+                            <td>{{obj.message}}</td>
+                            <td class="actions">
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#messageDetailsModal" (click)="viewDetails(obj)">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Message Details Modal -->
+                <div class="modal fade" id="messageDetailsModal" tabindex="-1" aria-labelledby="messageDetailsLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="messageDetailsLabel">Message Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Full Name:</strong> {{ selectedContact?.name }}</p>
+                                <p><strong>Email:</strong>  {{ selectedContact?.email }}</p>
+                                <p><strong>Message:</strong>  {{ selectedContact?.message }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" (click)="sendEmail(selectedContact?.email)">
+                                    Send Email
+                                  </button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Modal -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
