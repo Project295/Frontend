@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
+import { ResumeComponent } from './resume/resume.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { OtherprofileComponent } from './otherprofile/otherprofile.component';
     HomeComponent,
     ProfileComponent,
     OtherprofileComponent,
+    ResumeComponent,
+    UpdateprofileComponent,
   ],
   imports: [
     BrowserModule,

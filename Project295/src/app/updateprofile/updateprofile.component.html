@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5" style="margin-top: 85px !important;">
+    <div class="profile-container">
+        <h3 class="text-center mb-4">Update Profile</h3>
+
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" id="profileTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile Information</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="password-tab" data-bs-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="false">Change Password</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content mt-3" id="profileTabContent">
+
+            <!-- Profile Information Tab -->
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <form>
+                    <!-- Profile and Cover Image Upload Section -->
+                    <div class="profile-pic-container text-center mb-4 position-relative">
+                        <label for="profilePicInput" class="form-label">Profile Picture</label>
+
+                        <!-- Conditionally Show Image or Placeholder -->
+                        <div id="profilePicPreview" class="position-relative">
+                            <img *ngIf="profilePic" [src]="profilePic" alt="Profile Picture" class="rounded-circle" id="profilePic">
+                            
+                            <!-- Remove Button (X Icon) -->
+                            <button type="button" class="btn btn-danger position-absolute top-0 end-0" *ngIf="profilePic" (click)="removeProfilePic()">X</button>
+                        </div>
+                        <input type="file" class="form-control mt-2" id="profilePicInput" (change)="previewProfilePic($event)">
+                    </div>
+
+                    <div class="cover-pic-container text-center mb-4 position-relative">
+                        <label for="coverPicInput" class="form-label">Cover Picture</label>
+
+                        <!-- Conditionally Show Image or Placeholder -->
+                        <div id="coverPicPreview" class="position-relative">
+                            <img *ngIf="coverPic" [src]="coverPic" alt="Cover Picture" class="w-100 rounded" id="coverPic">
+
+                            <!-- Remove Button (X Icon) -->
+                            <button type="button" class="btn btn-danger position-absolute top-0 end-0" *ngIf="coverPic" (click)="removeCoverPic()">X</button>
+                        </div>
+                        <input type="file" class="form-control mt-2" id="coverPicInput" (change)="previewCoverPic($event)">
+                    </div>
+
+                    <!-- Personal Information Section -->
+                    <div>
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email">
+
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+
+                        <label for="jobTitle" class="form-label">Job Title</label>
+                        <input type="text" class="form-control" id="jobTitle" placeholder="Enter Job Title">
+
+                        <label for="company" class="form-label">Company</label>
+                        <input type="text" class="form-control" id="company" placeholder="Enter Company Name">
+
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="Enter Address">
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Change Password Tab -->
+            <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                <form>
+                    <div class="change-password-section">
+
+                        <label for="oldPassword" class="form-label">Old Password</label>
+                        <input type="password" class="form-control" id="oldPassword" placeholder="Enter Old Password">
+
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="newPassword" placeholder="Enter New Password">
+
+                        <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm New Password">
+
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Change Password</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

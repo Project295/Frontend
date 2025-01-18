@@ -5,6 +5,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { ResumeComponent } from './resume/resume.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: "profile/:id",
     component: OtherprofileComponent
+  },
+  {
+    path: "updateProfile",
+    component: UpdateprofileComponent
+  },
+  {
+    path: "resume",
+    component: ResumeComponent
   },
   {
     path:'security',
