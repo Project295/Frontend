@@ -32,7 +32,7 @@ export class LoginComponent {
         localStorage.setItem('userId', result.userId);
         localStorage.setItem('roleId', result.roleId);
         if(result.roleId ===1){
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin/userMange']);
 
         }
         else if(result.roleId ===2){

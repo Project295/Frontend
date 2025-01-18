@@ -5,4 +5,5 @@ export class userProfile{
  phoneNumber? : string;
  personalImagePath? : string
  headerImagePath? : string
+ password? : string
 }

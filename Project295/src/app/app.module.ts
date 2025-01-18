@@ -26,7 +26,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
     BrowserAnimationsModule
 
   ],

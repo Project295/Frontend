@@ -7,7 +7,7 @@
             
             <div style="display: flex; align-items: center; justify-content: space-between;">
                 <div class="search-box" style="flex: 1; max-width: 30%;">
-                  <input type="text" placeholder="Search by Category" style="width: 100%;">
+                  <input [(ngModel)]="filter" type="text" placeholder="Search by Category" style="width: 100%;" (change)="dataFilter()">
                 </div>
                 <button type="button" class="btn btn-success" style="margin-left: auto;" (click)="openAddPostStatusDialog()" >Add Category</button>
               </div>

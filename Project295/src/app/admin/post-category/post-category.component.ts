@@ -16,6 +16,8 @@ export class PostCategoryComponent {
    @ViewChild('callAddCategoryDailog') AddCategoryDailog !: TemplateRef<any>;
    @ViewChild('callEditCategoryDailog') EditCategoryDailog !: TemplateRef<any>;
    @ViewChild('callDeleteDailog') DeleteDailog !: TemplateRef<any>;
+   filter : string ="";
+   fData : any [] =[];
  
    ngOnInit(): void {
      this.admin.getAllPostCategory();
@@ -60,6 +62,18 @@ export class PostCategoryComponent {
        }
      });
    }
+   dataFilter() {
+    if (this.fData.length === 0) {
+      this.fData = this.admin.postCategory; 
+    }
+    if (this.filter !== "") {
+      this.admin.postCategory = this.fData.filter((x: any) =>
+        x.categoryName?.toLowerCase().includes(this.filter.toLowerCase())
+      );
+    } else {
+      this.admin.postCategory = this.fData;
+    }
+  }
  
  
 }

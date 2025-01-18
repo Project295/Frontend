@@ -5,7 +5,7 @@
     <div class="container-fluid">
           <div class="table-container">
               <div class="search-box">
-                  <input  type="text" placeholder="Search by name, email, or role...">
+                  <input  [(ngModel)]="filter" type="text" placeholder="Search by name, email, or role..." (change)="dateFilter()">
               </div>
               <table class="table">
                   <thead>
