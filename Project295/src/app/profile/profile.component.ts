@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild,HostListener  } from '@angular/core';
 import { HomeService } from '../services/home.service';
 import { userProfile } from '../dto/userProfileDTO';
 import { ToastrService } from 'ngx-toastr';
@@ -10,6 +10,7 @@ import { addPostDTO } from '../dto/addPostDTO';
 import { postCatigories } from '../dto/postCategoryDTO';
 import { postStatusDTO } from '../dto/postTypeDTO';
 import { UpdatePostDTO } from '../dto/UpdatePostDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,8 @@ import { UpdatePostDTO } from '../dto/UpdatePostDTO';
 export class ProfileComponent implements OnInit{
  
   
-  constructor(private homeService : HomeService, private toastr:ToastrService, private spinner:NgxSpinnerService, private dialog: MatDialog) {}
+  constructor(private homeService : HomeService, private toastr:ToastrService,
+     private spinner:NgxSpinnerService, private dialog: MatDialog,private router: Router) {}
 
    userId : number|undefined ;
 
@@ -73,6 +75,14 @@ export class ProfileComponent implements OnInit{
   //     this.toastr.error("Something wrong in user data please refresh")
   //   })
   // }
+  goUpdateProfile(){
+    this.router.navigate(['updateProfile']);
+
+  }
+  goResume(){
+    this.router.navigate(['resume']);
+
+  }
   getUserPosts(){
     this.homeService.getUserPosts(this.userId!).subscribe((result:any)=>{
       if(result){
@@ -257,6 +267,4 @@ removeImage(): void {
     this.fileInput.nativeElement.value = '';
   }
 }
-
-
 }

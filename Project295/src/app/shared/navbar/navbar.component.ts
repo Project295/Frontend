@@ -30,6 +30,7 @@ export class NavbarComponent {
       this.toastr.error("Something wrong in user data please refresh")
     })
   }
+
   isDropdownVisible: boolean = false;
   toggleDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;
