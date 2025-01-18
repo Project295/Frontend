@@ -6,10 +6,10 @@ data-sidebar-position="fixed" data-header-position="fixed">
         <div>
           <div class="brand-logo d-flex align-items-center">
             <div class="d-flex align-items-center">
-                <img src="../../../../../assets/Admin/images/profile/user-1.jpg" alt="Profile Picture" 
+                <img [src]="userProfile.personalImagePath" alt="Profile Picture" 
                     width="50" height="50" class="rounded-circle me-2">
                 <div style="margin-left: 20px; margin-top: 10px;">
-                    <h3 class="mb-0">AMANI SAMI</h3>
+                    <h3 class="mb-0">{{userProfile.firstName}} {{userProfile.lastName}}</h3>
                     <h4 class="text-muted">Admin</h4>
                 </div>
             </div>
@@ -23,14 +23,14 @@ data-sidebar-position="fixed" data-header-position="fixed">
                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                 <span class="hide-menu"></span>
               </li>
-              <li class="sidebar-item">
+              <!-- <li class="sidebar-item">
                 <a class="sidebar-link"  routerLink="/admin/dashboard" routerLinkActive="active" aria-expanded="false">
                   <span>
                     <i class="ti ti-layout-dashboard"></i>
                   </span>
                   <span class="hide-menu">Dashboard</span>
                 </a>
-              </li>
+              </li> -->
               <li class="sidebar-item">
                 <a class="sidebar-link" routerLink="/admin/userMange" routerLinkActive="active" aria-expanded="false">
                   <span>

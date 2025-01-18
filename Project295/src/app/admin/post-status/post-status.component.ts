@@ -15,9 +15,11 @@ export class PostStatusComponent {
    @ViewChild('callAddPostStatusDailog') AddPostStatusDailog !: TemplateRef<any>;
    @ViewChild('callEditPostStatusDailog') EditPostStatusDailog !: TemplateRef<any>;
    @ViewChild('callDeleteDailog') DeleteDailog !: TemplateRef<any>;
+   filter : string = "";
+   fData : any [] = [];
  
    ngOnInit(): void {
-     this.admin.getAllPostCategory();
+     this.admin.getAllPostStatus();
    }
    PostStatusForm: FormGroup = new FormGroup({
     statusName: new FormControl('', Validators.required),
@@ -60,4 +62,16 @@ export class PostStatusComponent {
      });
    }
  
+   dataFilter() {
+    if (this.fData.length === 0) {
+      this.fData = this.admin.postStatus; 
+    }
+    if (this.filter !== "") {
+      this.admin.postStatus = this.fData.filter((x: any) =>
+        x.statusName?.toLowerCase().includes(this.filter.toLowerCase())
+      );
+    } else {
+      this.admin.postStatus = this.fData;
+    }
+  }
 }

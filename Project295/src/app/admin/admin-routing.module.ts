@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserMangeComponent } from './user-mange/user-mange.component';
 import { MangeSkillsCategoriesComponent } from './mange-skills-categories/mange-skills-categories.component';
 import { MangeSkillsComponent } from './mange-skills/mange-skills.component';
@@ -12,7 +11,6 @@ import { ProfileComponent } from '../profile/profile.component';
 import { AdminprofileComponent } from './adminprofile/adminprofile.component';
 
 const routes: Routes = [
-  {path:'dashboard', component:DashboardComponent},
   {path:'userMange', component:UserMangeComponent},
   {path:'skillsCategories', component:MangeSkillsCategoriesComponent},
   {path:'mangeSkills/:id', component:MangeSkillsComponent},

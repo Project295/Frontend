@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserMangeComponent } from './user-mange/user-mange.component';
 import { SharedModule } from '../shared/shared.module';
 import { MangeSkillsCategoriesComponent } from './mange-skills-categories/mange-skills-categories.component';
@@ -17,7 +16,6 @@ import { AdminprofileComponent } from './adminprofile/adminprofile.component';
 @NgModule({
   declarations: [
     SidebarComponent,
-    DashboardComponent,
     UserMangeComponent,
     MangeSkillsCategoriesComponent,
     MangeSkillsComponent,

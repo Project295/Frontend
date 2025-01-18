@@ -5,6 +5,7 @@ export class userProfile{
  phoneNumber? : string;
  personalImagePath? : string
  headerImagePath? : string
+ password? : string
  brif? : string
  address? : string
  university?: string

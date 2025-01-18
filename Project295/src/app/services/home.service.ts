@@ -62,4 +62,9 @@ export class HomeService {
     }
     return this.http.put(`${this.apiUrl}/Post/UpdatePost`, formData);
   }
+
+  updateUser(userData : any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/User/UpdateUser`, userData);
+
+  }
 }

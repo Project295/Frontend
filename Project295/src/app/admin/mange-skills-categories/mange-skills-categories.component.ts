@@ -16,6 +16,8 @@ export class MangeSkillsCategoriesComponent {
   @ViewChild('callAddCategoryDailog') AddCategoryDailog !: TemplateRef<any>;
   @ViewChild('callEditCategoryDailog') EditCategoryDailog !: TemplateRef<any>;
   @ViewChild('callDeleteDailog') DeleteDailog !: TemplateRef<any>;
+  filter: string =""
+  fData: any[] =[]
 
   ngOnInit(): void {
     this.admin.getAllskillsCategory();
@@ -64,5 +66,17 @@ export class MangeSkillsCategoriesComponent {
   GoToSkills(id: number){
     this.router.navigate(['admin/mangeSkills/',id]);
 
+  }
+  dataFilter() {
+    if (this.fData.length === 0) {
+      this.fData = this.admin.skillsCategory; 
+    }
+    if (this.filter !== "") {
+      this.admin.skillsCategory = this.fData.filter((x: any) =>
+        x.skillsCategoryName?.toLowerCase().includes(this.filter.toLowerCase())
+      );
+    } else {
+      this.admin.skillsCategory = this.fData;
+    }
   }
 }
