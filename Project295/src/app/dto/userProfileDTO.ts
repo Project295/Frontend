@@ -6,4 +6,9 @@ export class userProfile{
  personalImagePath? : string
  headerImagePath? : string
  password? : string
+ brif? : string
+ address? : string
+ university?: string
+ jobTitle? : string
+ company? :string
 }

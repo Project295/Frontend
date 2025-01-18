@@ -1,20 +1,12 @@
-<nav class="navbar">
+<nav class="navbar" >
     <div class="navbar-left">
-      <a href="#" class="navbar-logo">
-        <i class="fab fa-facebook text-primary"></i>
-      </a>
-      <div class="search-bar">
-        <input type="text" placeholder="Search Facebook">
-        <button>
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
+    
     </div>
     <div class="navbar-center">
-      <a routerLink="/home" routerLinkActive="active" class="nav-icon active">
+      <a routerLink="/home" routerLinkActive="active" class="nav-icon ">
         <i class="fas fa-home"></i>
       </a>
-      <a routerLink="/friends"  class="nav-icon">
+      <a routerLink="/profile" routerLinkActive="active" class="nav-icon">
         <i class="fas fa-user-friends"></i>
       </a>
       <a href="#" class="nav-icon">
@@ -29,8 +21,8 @@
     </div>
     <div class="navbar-right">
         <div class="profile">
-          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Picture">
-          <span>John Doe</span>
+          <img [src]="userProfile?.personalImagePath"  alt="Profile Picture">
+          <span>{{userProfile?.firstName}} {{userProfile?.lastName}}</span>
         </div>
         <div class="nav-icon" (click)="toggleDropdown()">
           <i class="fas fa-caret-down"></i>
@@ -39,8 +31,8 @@
         <!-- Dropdown Menu -->
         <div class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
          <a routerLink="/profile" routerLinkActive="active">Profile</a>
-         <a routerLink="/settings" routerLinkActive="active">Settings</a>
-         <a routerLink="/logout" routerLinkActive="active">Log Out</a>
+         <a routerLink="/updateProfile" routerLinkActive="active">settings</a>
+         <a (click)="logout()">Log Out</a>
         </div>
       </div>
       

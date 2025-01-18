@@ -147,15 +147,3 @@ a {
 .icon-orange:hover {
     color: orange !important; /* Change this to the hover color of your choice */
 }
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  .fa-ellipsis-vertical {
-    font-size: 18px;
-    cursor: pointer;
-  }
-  

@@ -377,3 +377,110 @@ body{margin-top:20px;
         width: 100%;
         height: 100%;
     }
+
+
+    /* General Container */
+.container {
+  margin-top: 73px;
+}
+
+/* Search Form Container */
+.search-form-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-form-container:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.search-form-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+/* Form Styling */
+.search-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.search-form .form-group {
+  margin-bottom: 20px;
+}
+
+/* Label Styling */
+.search-form label {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Input and Select Styling */
+.search-form .form-control {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 1.1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.search-form .form-control::placeholder {
+  color: #aaa;
+}
+
+/* Button Styling */
+.search-form .btn {
+  padding: 14px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form .btn:hover {
+  background-color: #0056b3;
+}
+
+.search-form .btn:focus {
+  outline: none;
+}
+
+/* Column Adjustment */
+.search-form .col-md-3 {
+  margin-bottom: 15px;
+}
+
+.search-form .col-md-3 .form-group {
+  margin-bottom: 0;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .search-form-container {
+      padding: 20px;
+  }
+  .search-form-title {
+      font-size: 1.4rem;
+  }
+  .search-form .col-md-3 {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+}

@@ -7,8 +7,9 @@
   body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
+    margin-top: 60px;
   }
-  
+
   /* Navbar Styles */
   .navbar {
     display: flex;
@@ -17,8 +18,10 @@
     background-color: #3b5998;
     color: white;
     padding: 10px 20px;
-    position: sticky;
+    position: absolute; 
     top: 0;
+    left: 0;
+    width: 100%;  
     z-index: 1000;
   }
   
@@ -26,13 +29,6 @@
   .navbar-left {
     display: flex;
     align-items: center;
-  }
-  
-  .navbar-logo {
-    font-size: 28px;
-    color: white;
-    margin-right: 20px;
-    text-decoration: none;
   }
   
   .search-bar {
