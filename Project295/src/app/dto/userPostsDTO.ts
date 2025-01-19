@@ -6,5 +6,4 @@ export class userPosts{
     createdAt? : Date;
     attachmentPath? : string;
     attachmentId? : number;
-
 }

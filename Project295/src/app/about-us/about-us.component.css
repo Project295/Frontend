@@ -1,0 +1,98 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .about-us-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .about-us-header {
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 12px;
+    position: relative;
+  }
+  
+  .about-us-header h1 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .about-us-header p {
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.6;
+    color: #090909; /* Slightly muted text */
+  }
+  
+  .about-us-content {
+    background-color: white;
+    margin-top: -40px; /* Overlap header */
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-us-section {
+    margin-bottom: 20px;
+  }
+  
+  .about-us-section h2 {
+    font-size: 22px;
+    color: #3b5998; /* Header text matches the theme color */
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .about-us-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+  }
+  
+  .about-us-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #555;
+  }
+  
+  .about-us-section ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .about-us-header img {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .about-us-header h1 {
+      font-size: 28px;
+    }
+  
+    .about-us-header p {
+      font-size: 16px;
+    }
+  
+    .about-us-section h2 {
+      font-size: 20px;
+    }
+  
+    .about-us-section p,
+    .about-us-section ul li {
+      font-size: 14px;
+    }
+  }
+  

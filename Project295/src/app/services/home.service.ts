@@ -12,20 +12,20 @@ export class HomeService {
 
   private apiUrl = 'https://localhost:7011/api';
 
-  getUserPersonalData(userId : number):Observable<any>{
-    const params = new HttpParams().set("userId",userId.toString())
+  getUserPersonalData(userId: number): Observable<any> {
+    const params = new HttpParams().set("userId", userId.toString())
     return this.http.get(`${this.apiUrl}/User/GetUserProfile`, { params })
   }
   // getProfileCounts(userId : number):Observable<any>{
   //   const params = new HttpParams().set("userId",userId.toString())
   //   return this.http.get(`${this.apiUrl}/User/ProfileCounts`, { params })
   // }
-  getUserPosts(userId : number):Observable<any>{
-    const params = new HttpParams().set("userId",userId.toString())
+  getUserPosts(userId: number): Observable<any> {
+    const params = new HttpParams().set("userId", userId.toString())
     return this.http.get(`${this.apiUrl}/Post/GetAllUserPosts`, { params })
   }
-  deletePost(postId : number):Observable<any>{
-    const params = new HttpParams().set("postId",postId.toString())
+  deletePost(postId: number): Observable<any> {
+    const params = new HttpParams().set("postId", postId.toString())
     return this.http.delete(`${this.apiUrl}/Post/DeletePost`, { params })
   }
   AddPost(post: any): Observable<any> {
@@ -40,11 +40,11 @@ export class HomeService {
     }
     return this.http.post(`${this.apiUrl}/Post/AddPost`, formData);
   }
-  
-  getPostCategories():Observable<any>{
+
+  getPostCategories(): Observable<any> {
     return this.http.get(`${this.apiUrl}/Category`)
   }
-  getPostStatus():Observable<any>{
+  getPostStatus(): Observable<any> {
     return this.http.get(`${this.apiUrl}/PostStatus`)
   }
   UpdatePost(post: any): Observable<any> {
@@ -63,9 +63,61 @@ export class HomeService {
     return this.http.put(`${this.apiUrl}/Post/UpdatePost`, formData);
   }
 
-  updateUser(userData : any): Observable<any> {
+  updateUser(userData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/User/UpdateUser`, userData);
   }
+
+  getAllPosts(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/Post`)
+  }
+
+  addComplain(complaintDescription: string, postId: number, userId: number): Observable<any> {
+    const params = new HttpParams()
+      .set('complaintDescription', complaintDescription)
+      .set('postId', postId.toString())
+      .set('userId', userId.toString());
+
+    return this.http.post(`${this.apiUrl}/Complain/CreateComplain`, null, { params });
+  }
+
+  updateUserPassword(userData: any, userId: any): Observable<any> {
+    const payload = {
+      oldPassword: userData.oldPassword,
+      newPassword: userData.newPassword,
+      userId: userId
+    };
+
+    return this.http.put(`${this.apiUrl}/Login/UpdatePassword`, payload);
+  }
+
+  updateUserProfile ( userProfileForm : any, userId : any , profilePic : any,coverPic : any ): Observable<any> {
+    const formData = new FormData();
+    formData.append('userId', userId.toString());
+    formData.append('firstName', userProfileForm.firstName);
+    formData.append('lastName', userProfileForm.lastName);
+    formData.append('email', userProfileForm.email);
+    formData.append('phoneNumber', userProfileForm.phoneNumber);
+    formData.append('jobTitle', userProfileForm.jobTitle);
+    formData.append('company', userProfileForm.company);
+    formData.append('address', userProfileForm.address);
+    formData.append('brief', userProfileForm.brief);
+
+    if (profilePic) {
+      formData.append('profilePic', profilePic);
+    }
+    if (coverPic) {
+      formData.append('coverPic', coverPic);
+    }
+
+    return this.http.put(`${this.apiUrl}/User/UpdateUserData`, formData);
+  
+  }
+
+  addContact(message : string , name : string , email : string) : Observable<any>{
+    const body = { name, email, message };
+    return this.http.post(`${this.apiUrl}/Contactus/CreateContactus`, body);
+  }
+
 
   UserExperienceById: any = [];
     getAllUserExperienceById(userId:number) {
@@ -359,3 +411,4 @@ export class HomeService {
       );
     }
 }
+

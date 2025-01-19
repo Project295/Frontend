@@ -50,3 +50,20 @@ button.btn-danger {
   font-size: 18px;
   line-height: 25px;
 }
+.input-group .btn-outline-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove extra padding around the icon */
+  width: 40px; /* Consistent button width */
+  height: 38px; /* Match the input height */
+}
+
+.input-group .btn-outline-secondary i {
+  font-size: 1.2rem; /* Adjust the size of the icon */
+  color: #6c757d; /* Match the color of the input border */
+}
+
+.input-group .btn-outline-secondary:hover i {
+  color: #495057; /* Darker color on hover for better visibility */
+}
