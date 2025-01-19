@@ -7,6 +7,7 @@ import { postCatigories } from '../dto/postCategoryDTO';
 import { userPosts } from '../dto/userPostsDTO';
 import { UpdatePostDTO } from '../dto/UpdatePostDTO';
 import { postStatusDTO } from '../dto/postTypeDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otherprofile',
@@ -17,7 +18,8 @@ export class OtherprofileComponent {
   constructor(
     private homeService : HomeService,
     private toastr:ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   userId!: number;
@@ -97,5 +99,10 @@ export class OtherprofileComponent {
     } else {
         return `${diffInYears} year${diffInYears === 1 ? '' : 's'} ago`;
     }
+}
+
+goToResume(){
+  this.router.navigate(['resume/',this.userId]);
+
 }
 }

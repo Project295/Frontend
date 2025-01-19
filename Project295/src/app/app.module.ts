@@ -13,6 +13,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { ResumeComponent } from './resume/resume.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { OthersResumeComponent } from './others-resume/others-resume.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     OtherprofileComponent,
     ResumeComponent,
     UpdateprofileComponent,
+    OthersResumeComponent,
   ],
   imports: [
     BrowserModule,
