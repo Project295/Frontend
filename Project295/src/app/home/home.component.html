@@ -1,53 +1,69 @@
 <app-navbar></app-navbar>
        <!-- Search Form -->
-       <div class="search-form-container" style="margin-top: 73px; padding-top: 5px;">
-        <form class="search-form d-flex justify-content-center" style="height: 30px; margin-bottom: 5px;">
-            <div class="row d-flex justify-content-center" style="height: 30px;">
+       <div class="search-form-container">
+        <div class="search-form d-flex justify-content-center">
+            <div class="row d-flex justify-content-center align-items-center search-row">
                 <!-- Name Input -->
-                <div style="width: 250px; margin: 5px;">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="searchName" placeholder="Enter name" style="height: 50px;">
-                    </div>
+                <div class="col input-container">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="searchName" 
+                        placeholder="Enter name" 
+                        [(ngModel)]="nameForSearch"
+                        name="nameForSearch">
                 </div>
-                
+    
                 <!-- Email Input -->
-                <div style="width: 250px; margin: 5px;">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="searchEmail" placeholder="Enter email" style="height: 50px;">
-                    </div>
+                <div class="col input-container">
+                    <input 
+                        type="email" 
+                        class="form-control" 
+                        id="searchEmail" 
+                        placeholder="Enter email" 
+                        [(ngModel)]="userNameForSearch"
+                        name="userNameForSearch">
                 </div>
-                
+    
                 <!-- Category Dropdown -->
-                <div style="width: 200px; margin: 5px;">
-                    <div class="form-group">
-                        <select class="form-control" id="category" style="height: 50px;">
-                            <option value="">Select Category</option>
-                            <option value="Category 1">Category 1</option>
-                            <option value="Category 2">Category 2</option>
-                            <option value="Category 3">Category 3</option>
-                        </select>
-                    </div>
+                <div class="col input-container">
+                    <select 
+                        class="form-control" 
+                        id="category" 
+                        [(ngModel)]="categoryForSearch"
+                        name="categoryForSearch">
+                        <option [value]="0">Select Category</option>
+                        <option *ngFor="let category of postCategory" [value]="category.categoryId">{{ category.categoryName }}</option>
+                    </select>
                 </div>
-                
+    
                 <!-- Status Dropdown -->
-                <div style="width: 200px; margin: 5px;">
-                    <div class="form-group">
-                        <select class="form-control" id="status" style="height: 50px;">
-                            <option value="">Select Status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                    </div>
+                <div class="col input-container">
+                    <select 
+                        class="form-control" 
+                        id="status" 
+                        [(ngModel)]="PostTypeForSearch"
+                        name="PostTypeForSearch">
+                        <option [value]="0">Select Status</option>
+                        <option *ngFor="let type of postType" [value]="type.postStatusId">{{ type.statusName }}</option>
+                    </select>
                 </div>
-                
-                <!-- Search Button -->
-                <div style="width: 200px; margin: 5px;">
-                    <button type="submit" class="btn btn-primary btn-block" style="height: 50px;">Search</button>
+    
+                <!-- Buttons -->
+                <div class="col button-container d-flex justify-content-start">
+                    <button 
+                        type="reset" 
+                        class="btn btn-primary"
+                        (click)="resetSearch()">Reset</button>
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary"
+                        (click)="search()">Search</button>
                 </div>
             </div>
-        </form>
-        
+        </div>
     </div>
+    
 <div class="container">
     
     <div class="row justify-content-center">
@@ -55,197 +71,33 @@
     
             <div class="row" >
                 
-                <div class="col-sm-12">
+                <div class="col-sm-12" *ngFor="let post of homePosts">
                     <div class="panel panel-white post">
-                        <div class="post-heading">
-                            <div class="pull-left image">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-circle avatar" alt="user profile image">
-                            </div>
-                            <div class="pull-left meta">
-                                <div class="title h5">
-                                    <a href="#"><b>John Doe</b></a>
-                                    uploaded a photo.
+                        <div class="post-heading" style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="pull-left image">
+                                    <img [src]="post.userAttachmentPath" class="img-circle avatar" alt="user profile image">
                                 </div>
-                                <h6 class="text-muted time">5 seconds ago</h6>
+                                <div class="pull-left meta" style="margin-left: 10px;">
+                                    <div class="title h5">
+                                        <a (click)="redirectToProfile(post.userId!)"><b>{{post.firstName}} {{post.lastName}}</b></a>
+                                    </div>
+                                    <h6 class="text-muted time">{{timeAgo(post.createdAt!.toString())}}</h6>
+                                </div>
+                            </div>
+                            <div class="icon-container">
+                                <i class="fa-solid fa-exclamation-circle" (click)="openReport(post.postId!)"></i>
                             </div>
                         </div>
+                        
+                        
+                        <p style="margin-left: 10px;">{{post.contant}}</p>
                         <div class="post-image">
-                            <img src=""><img src="https://www.bootdey.com/image/400x200" class="image" alt="image post">
-                        </div>
-                        <div class="post-description">
-                            <h4>Product Shoot</h4>
-                            <p>Here is a picture of the walkway to our product shoot.</p>
-                            <div class="stats">
-                                <a href="javascript:void(0);" class="btn btn-default stat-item">
-                                    <i class="fa fa-thumbs-up icon"></i>228
-                                </a>
-                                <a href="javascript:void(0);" class="btn btn-default stat-item">
-                                    <i class="fa fa-share icon"></i>128
-                                </a>
-                            </div>
-                        </div>
-                        <div class="post-footer">
-                            <div class="input-group"> 
-                                <input class="form-control" placeholder="Add a comment" type="text">
-                                <span class="input-group-addon">
-                                    <a href="javascript:void(0);"><i class="fa fa-edit"></i></a>  
-                                </span>
-                            </div>
-                            <ul class="comments-list">
-                                <li class="comment">
-                                    <a class="pull-left" href="javascript:void(0);">
-                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
-                                    </a>
-                                    <div class="comment-body">
-                                        <div class="comment-heading">
-                                            <h4 class="user">John dOE</h4>
-                                            <h5 class="time">7 minutes ago</h5>
-                                        </div>
-                                        <p>I really love this picture. I really wish i could have been there.</p>
-                                    </div>
-                                </li>
-                                <li class="comment">
-                                    <a class="pull-left" href="javascript:void(0);">
-                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                                    </a>
-                                    <div class="comment-body">
-                                        <div class="comment-heading">
-                                            <h4 class="user">John Doe</h4>
-                                            <h5 class="time">3 minutes ago</h5>
-                                        </div>
-                                        <p>I think I might you this for one of my projects.</p>
-                                    </div>
-                                </li>
-                                <li class="comment">
-                                    <a class="pull-left" href="javascript:void(0);">
-                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar">
-                                    </a>
-                                    <div class="comment-body">
-                                        <div class="comment-heading">
-                                            <h4 class="user">John Doe</h4>
-                                            <h5 class="time">10 seconds ago</h5>
-                                        </div>
-                                        <p>Wow! This is gorgeous.</p>
-                                    </div>
-                                </li>
-                            </ul>
+                            <img *ngIf="post.postAttachmentPath" src=""><img *ngIf="post.postAttachmentPath" [src]="post.postAttachmentPath" class="image" alt="image post">
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-sm-12">
-                    <div class="panel panel-white post">
-                        <div class="post-heading">
-                            <div class="pull-left image">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-circle avatar" alt="user profile image">
-                            </div>
-                            <div class="pull-left meta">
-                                <div class="title h5">
-                                    <a href="#"><b>John Doe</b></a>
-                                    made a post.
-                                </div>
-                                <h6 class="text-muted time">1 minute ago</h6>
-                            </div>
-                        </div> 
-                        <div class="post-description"> 
-                            <p>Anyone who is interested in helping out with the Mark &amp; Markson dinner party, please let me know before the week is over.</p>
-                            <div class="stats">
-                                <a href="javascript:void(0);" class="btn btn-default stat-item">
-                                    <i class="fa fa-thumbs-up icon"></i>2
-                                </a>
-                                <a href="javascript:void(0);" class="btn btn-default stat-item">
-                                    <i class="fa fa-share icon"></i>12
-                                </a>
-                            </div>
-                        </div>
-                        <div class="post-footer">
-                            <div class="input-group"> 
-                                <input class="form-control" placeholder="Add a comment" type="text">
-                                <span class="input-group-addon">
-                                    <a href="javascript:void(0);"><i class="fa fa-edit"></i></a>  
-                                </span>
-                            </div>
-                            <ul class="comments-list">
-                                <li class="comment">
-                                    <a class="pull-left" href="javascript:void(0);">
-                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                                    </a>
-                                    <div class="comment-body">
-                                        <div class="comment-heading">
-                                            <h4 class="user">Gavino Free</h4>
-                                            <h5 class="time">5 minutes ago</h5>
-                                        </div>
-                                        <p>Sure, I'd help out.</p>
-                                    </div>
-                                    <ul class="comments-list">
-                                        <li class="comment">
-                                            <a class="pull-left" href="javascript:void(0);">
-                                                <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar">
-                                            </a>
-                                            <div class="comment-body">
-                                                <div class="comment-heading">
-                                                    <h4 class="user">John Doe</h4>
-                                                    <h5 class="time">3 minutes ago</h5>
-                                                </div>
-                                                <p>I will email you the details.</p>
-                                            </div>
-                                        </li> 
-                                        <li class="comment">
-                                            <a class="pull-left" href="javascript:void(0);">
-                                                <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="avatar">
-                                            </a>
-                                            <div class="comment-body">
-                                                <div class="comment-heading">
-                                                    <h4 class="user">John Doe</h4>
-                                                    <h5 class="time">3 minutes ago</h5>
-                                                </div>
-                                                <p>Ok, cool.</p>
-                                            </div>
-                                        </li> 
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                 
-                <div class="col-sm-12">
-                    <div class="panel panel-white post">
-                        <div class="post-heading">
-                            <div class="pull-left image">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="img-circle avatar" alt="user profile image">
-                            </div>
-                            <div class="pull-left meta">
-                                <div class="title h5">
-                                    <a href="#"><b>Yanique Robinson</b></a>
-                                    shared a video.
-                                </div>
-                                <h6 class="text-muted time">1 minute ago</h6>
-                            </div>
-                        </div> 
-                        <div class="post-video">
-                            <div class="fluid-width-video-wrapper" style="padding-top: 56.2%;"><iframe src="https://player.vimeo.com/video/98417189" id="fitvid369523"></iframe></div>
-                        </div>
-                        <div class="post-description">  
-                            <div class="stats">
-                                <a href="javascript:void(0);" class="btn btn-default stat-item">
-                                    <i class="fa fa-thumbs-up icon"></i>2
-                                </a>
-                                <a href="javascript:void(0);" class="btn btn-default stat-item">
-                                    <i class="fa fa-share icon"></i>12
-                                </a>
-                            </div>
-                        </div>
-                        <div class="post-footer">
-                            <div class="input-group"> 
-                                <input class="form-control" placeholder="Add a comment" type="text">
-                                <span class="input-group-addon">
-                                    <a href="javascript:void(0);"><i class="fa fa-edit"></i></a> 
-                                </span>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
+
                 
             </div>
             
@@ -253,3 +105,20 @@
     
     </div>
     </div>
+
+    <ng-template #reportTemplate>
+        <div class="report-modal">
+          <h3>Report Post</h3>
+          <textarea
+            [(ngModel)]="complaintDescription"
+            placeholder="Describe the issue with this post..."
+            rows="4"
+            class="complaint-textarea"
+          ></textarea>
+          <div class="report-actions">
+            <button class="btn btn-secondary" (click)="cancelReport()">Cancel</button>
+            <button class="btn btn-primary" (click)="sendReport()">Send</button>
+          </div>
+        </div>
+      </ng-template>
+      

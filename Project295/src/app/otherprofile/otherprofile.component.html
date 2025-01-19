@@ -49,29 +49,29 @@
         <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
             tabindex="0">
             <div class="row">
-                <div class="col-lg-4">
+                <div *ngIf="userProfile?.brif || userProfile?.userName || userProfile?.company || userProfile?.university || userProfile?.address" class="col-lg-4">
                     <div class="card shadow-none border">
                         <div class="card-body">
-                            <h4 class="fw-semibold mb-3">Introduction</h4>
+                            <h4 *ngIf="userProfile?.brif" class="fw-semibold mb-3">Introduction</h4>
                             <p>{{userProfile?.brif}}</p>
                             <ul class="list-unstyled mb-0">
 
-                                <li class="d-flex align-items-center gap-3 mb-4">
+                                <li *ngIf="userProfile?.userName" class="d-flex align-items-center gap-3 mb-4">
                                     <i class="fa fa-envelope text-dark fs-6"></i>
                                     <h6 class="fs-4 fw-semibold mb-0">
                                         <a href="mailto:{{ userProfile?.userName }}" class="__cf_email__"
                                             data-cfemail="245c5d5e4e4b4a45504c454a644349454d480a474b49">{{userProfile?.userName}}</a>
                                     </h6>
                                 </li>
-                                <li class="d-flex align-items-center gap-3 mb-4">
+                                <li *ngIf="userProfile?.company" class="d-flex align-items-center gap-3 mb-4">
                                     <i class="fa fa-briefcase text-dark fs-6"></i>
                                     <h6 class="fs-4 fw-semibold mb-0">{{userProfile?.company}}</h6>
                                 </li>
-                                <li class="d-flex align-items-center gap-3 mb-4">
+                                <li *ngIf="userProfile?.university" class="d-flex align-items-center gap-3 mb-4">
                                     <i class="bi bi-bank2"></i>
                                     <h6 class="fs-4 fw-semibold mb-0">{{userProfile?.university}}</h6>
                                 </li>
-                                <li class="d-flex align-items-center gap-3 mb-2">
+                                <li *ngIf="userProfile?.address" class="d-flex align-items-center gap-3 mb-2">
                                     <i class="bi bi-house-add"></i>
                                     <h6 class="fs-4 fw-semibold mb-0">{{userProfile?.address}}</h6>
                                 </li>
@@ -88,10 +88,10 @@
                                     <div class="d-flex align-items-center gap-3">
                                         <img [src]="userProfile?.personalImagePath" alt="" class="rounded-circle" width="40" height="40">
                                         <h6 class="fw-semibold mb-0 fs-4">{{userProfile?.firstName}} {{userProfile?.lastName}}</h6>
-                                        <span class="fs-2"><span class="p-1 bg-light rounded-circle d-inline-block"></span> 
+                                        <span class="fs-2"><span class="p-1 bg-light rounded-circle d-inline-block"></span>
                                         {{timeAgo(post.createdAt!.toString())}}</span>
                                         <div class="icon-container">
-                                            <i class="fa-solid fa-exclamation-circle"></i>
+                                            <i class="fa-solid fa-exclamation-circle" (click)="openReport(post.postId!)" ></i>
                                         </div>
                                     </div>
                                     <p class="text-dark my-3">{{post.contant}}</p>
@@ -105,3 +105,20 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #reportTemplate>
+    <div class="report-modal">
+      <h3>Report Post</h3>
+      <textarea
+        [(ngModel)]="complaintDescription"
+        placeholder="Describe the issue with this post..."
+        rows="4"
+        class="complaint-textarea"
+      ></textarea>
+      <div class="report-actions">
+        <button class="btn btn-secondary" (click)="cancelReport()">Cancel</button>
+        <button class="btn btn-primary" (click)="sendReport()">Send</button>
+      </div>
+    </div>
+  </ng-template>

@@ -42,15 +42,10 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
     this.userId = Number(localStorage.getItem("userId"));
     if(this.userId){
-      this.spinner.show()
       this.getUserPersonalData()
-      //this.getProfileCounts()
       this.getUserPosts() 
       this.getPostCategories();
       this.getPostStatus()
-      setTimeout(() => {
-        this.spinner.hide();
-      }, 4000);
 
     }
 

@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { ResumeComponent } from './resume/resume.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,14 @@ const routes: Routes = [
   {
     path: "resume",
     component: ResumeComponent
+  },
+  {
+    path:"contactUs",
+    component:ContactComponent
+  },
+  {
+    path:"aboutUs",
+    component:AboutUsComponent
   },
   {
     path:'security',

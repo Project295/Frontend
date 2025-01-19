@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { userProfile } from 'src/app/dto/userProfileDTO';
 import { HomeService } from 'src/app/services/home.service';
@@ -25,7 +26,7 @@ export class AdminprofileComponent implements OnInit {
   });
   showPassword = false;
   selectedImage: string | null = null;
-  constructor(private homeService: HomeService, private toastr: ToastrService) {
+  constructor(private homeService: HomeService, private toastr: ToastrService, private route : Router) {
   }
   ngOnInit(): void {
     this.userId = Number(localStorage.getItem("userId"));
@@ -98,4 +99,5 @@ export class AdminprofileComponent implements OnInit {
     this.updateData.get('image')?.setValue(null);
   }
 
+ 
 }

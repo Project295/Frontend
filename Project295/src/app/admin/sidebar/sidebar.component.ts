@@ -12,11 +12,9 @@ import { ToastrService } from 'ngx-toastr';
 export class SidebarComponent implements OnInit{
  userId: number = 0
  userProfile : userProfile = new userProfile();
-
 constructor(private router: Router , private homeService : HomeService, private toastr:ToastrService) { }  
- 
   ngOnInit(): void {
-    this.userId = Number(localStorage.getItem("userId"));
+    this.userId = Number(localStorage.getItem("userId")); 
     this.getUserData();
 
   }
@@ -26,25 +24,8 @@ constructor(private router: Router , private homeService : HomeService, private 
       this.userProfile = resulte;
     })
   }
-  
-    userId : number|undefined ;
-    userProfile: any | null = null;
-    
-    ngOnInit(): void {
-      this.userId = Number(localStorage.getItem("userId"));
-      if(this.userId){
-        this.getUserPersonalData()  
-      }  
-    }
-    getUserPersonalData(){
-      this.homeService.getUserPersonalData(this.userId!).subscribe((result:any)=>{
-        if(result){
-          this.userProfile= result
-        }
-      },error=>{
-        this.toastr.error("Something wrong in user data please refresh")
-      })
-    }
+
+
   logout() {
     localStorage.clear(); 
     this.router.navigate(['/security/sign-in']);
