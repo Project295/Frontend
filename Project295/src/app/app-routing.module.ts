@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { ResumeComponent } from './resume/resume.component';
+import { OthersResumeComponent } from './others-resume/others-resume.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: "resume",
     component: ResumeComponent
+  },
+  {
+    path: "resume/:id",
+    component: OthersResumeComponent
   },
   {
     path:'security',
