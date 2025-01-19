@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="pull-left meta" style="margin-left: 10px;">
                                     <div class="title h5">
-                                        <a (click)="redirectToProfile(post.userId!)"><b>{{post.firstName}} {{post.lastName}}</b></a>
+                                        <a style="cursor: pointer;" (click)="redirectToProfile(post.userId!)"><b>{{post.firstName}} {{post.lastName}}</b></a>
                                     </div>
                                     <h6 class="text-muted time">{{timeAgo(post.createdAt!.toString())}}</h6>
                                 </div>

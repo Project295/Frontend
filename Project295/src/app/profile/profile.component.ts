@@ -78,15 +78,20 @@ export class ProfileComponent implements OnInit{
     this.router.navigate(['resume']);
 
   }
-  getUserPosts(){
-    this.homeService.getUserPosts(this.userId!).subscribe((result:any)=>{
-      if(result){
-       this.userPosts=result.posts;
-       this.postsCount=result.postsCounts
+  getUserPosts(): void {
+    this.homeService.getUserPosts(this.userId!).subscribe(
+      (result: any) => {
+        if (result) {
+          this.userPosts = result.posts.sort((a: any, b: any) => 
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+          this.postsCount = result.postsCounts;
+        }
+      },
+      (error) => {
+        this.toastr.error('Failed to load posts. Please refresh.');
       }
-    },error=>{
-      this.toastr.error("Something wrong in user data please refresh")
-    })
+    );
   }
 
   openDeleteDialog(postId : number): void {
@@ -189,16 +194,23 @@ export class ProfileComponent implements OnInit{
     return !!this.postToUpdate.contant && !!this.postToUpdate.categoryId && !!this.postToUpdate.postStatusId;
   }
   submitPost(): void {
-    this.addPosts.userId=this.userId;
-    this.homeService.AddPost(this.addPosts).subscribe((resulte:any)=>{
-      this.removeImage();
-      this.addPosts= new addPostDTO();  
+    if (!this.isFormValid()) {
+      this.toastr.error('Please fill out all required fields.');
+      return;
+    }
 
-        this.toastr.success("Post added successfully")
-      
-    },error=>{
-      this.toastr.error("Failed to add post")
-    })
+    this.addPosts.userId = this.userId!;
+    this.homeService.AddPost(this.addPosts).subscribe(
+      (result: any) => {
+        this.removeImage();
+        this.addPosts = new addPostDTO();
+        this.toastr.success('Post added successfully');
+        this.getUserPosts();
+      },
+      (error) => {
+        this.toastr.error('Failed to add the post.');
+      }
+    );
   }
   UpdatePost(): void {
     this.homeService.UpdatePost(this.postToUpdate).subscribe((resulte:any)=>{
@@ -252,13 +264,17 @@ selectPhoto(event: any): void {
 }
 
 
+
 removeImage(): void {
   this.selectedImage = null;
   this.addPosts.attachment = undefined;
-  this.postToUpdate.attachment = undefined;
-  this.postToUpdate.attachmentPath = "";
 
-  if (this.fileInput.nativeElement) {
+  if (this.postToUpdate) {
+    this.postToUpdate.attachment = undefined;
+    this.postToUpdate.attachmentPath = '';
+  }
+
+  if (this.fileInput?.nativeElement) {
     this.fileInput.nativeElement.value = '';
   }
 }

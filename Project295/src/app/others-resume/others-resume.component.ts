@@ -27,6 +27,21 @@ export class OthersResumeComponent {
       this.home.GetUserEducationById(this.userId)
     });
   }
+  isCVEmpty(): boolean {
+    return !(
+      (this.userProfile?.firstName ||
+        this.userProfile?.lastName ||
+        this.userProfile?.jobTitle ||
+        this.userProfile?.phoneNumber ||
+        this.userProfile?.userName ||
+        this.userProfile?.address) ||
+      (this.home.UserExperienceById && this.home.UserExperienceById.length > 0) ||
+      (this.home.UserProjectById && this.home.UserProjectById.length > 0) ||
+      (this.home.UserSkillByUserId && this.home.UserSkillByUserId.length > 0) ||
+      (this.home.UserEducationById && this.home.UserEducationById.length > 0)
+    );
+  }
+  
   getUserPersonalData(){
     this.home.getUserPersonalData(this.userId!).subscribe((result:any)=>{
       if(result){

@@ -1,57 +1,93 @@
-<div class="container mt-5">
+
+<app-navbar></app-navbar>
+
+<div class="container mt-5" style="margin-top: 90px !important;">
   <div class="d-flex justify-content-end mb-4">
     <button class="btn btn-primary" (click)="toggleEditMode()">
       <i class="ti ti-edit"></i> {{ editMode ? 'View' : 'Edit' }} Resume
     </button>
   </div>
-
   <div class="resume-header text-center">
-    <h1>{{userProfile?.firstName}} {{userProfile?.lastName}}</h1>
-    <h3>{{userProfile?.jobTitle}}</h3>
-    <p>{{ userProfile?.phoneNumber }} | {{ userProfile?.userName }} | {{ userProfile?.address }}</p>
+    <h1>
+      {{ userProfile?.firstName ? userProfile?.firstName : 'Please add your first name' }} 
+      {{ userProfile?.lastName ? userProfile?.lastName : 'Please add your last name' }}
+    </h1>
+    <h3>{{ userProfile?.jobTitle ? userProfile?.jobTitle : 'Please add your job title' }}</h3>
+    <p>
+      {{ userProfile?.phoneNumber ? userProfile?.phoneNumber : 'Please add your phone number' }} |
+      {{ userProfile?.userName ? userProfile?.userName : 'Please add your username' }} |
+      {{ userProfile?.address ? userProfile?.address : 'Please add your address' }}
+    </p>
   </div>
-
+  
   <div *ngIf="!editMode">
     <div class="resume-section">
       <h4>EXPERIENCES</h4>
-      <div *ngFor="let experience of home.UserExperienceById">
-        <div class="experience-item">
-          <div class="experience-header">
-            <strong>{{ experience.userExperienceTitle }}</strong>
-            <span>({{ experience.userExperienceDateFrom | date }}- {{ experience.userExperienceDateTo| date }})</span>
+      <div *ngIf="home.UserExperienceById?.length > 0; else noExperiences">
+        <div *ngFor="let experience of home.UserExperienceById">
+          <div class="experience-item">
+            <div class="experience-header">
+              <strong>{{ experience.userExperienceTitle ? experience.userExperienceTitle : 'Please add a title for your experience' }}</strong>
+              <span>
+                ({{ experience.userExperienceDateFrom ? (experience.userExperienceDateFrom | date) : 'Start Date Not Provided' }} - 
+                {{ experience.userExperienceDateTo ? (experience.userExperienceDateTo | date) : 'End Date Not Provided' }})
+              </span>
+            </div>
+            <p>{{ experience.userExperienceDiscription ? experience.userExperienceDiscription : 'Please add a description for your experience' }}</p>
           </div>
-          <p>{{ experience.userExperienceDiscription }}</p>
         </div>
       </div>
+      <ng-template #noExperiences>
+        <p>Please add your experiences.</p>
+      </ng-template>
     </div>
-
+  
     <div class="resume-section">
       <h4>PROJECTS</h4>
-      <div *ngFor="let project of home.UserProjectById">
-        <div class="experience-item">
-          <div class="experience-header">
-            <strong>{{ project.userProjectsTitle }}</strong>
+      <div *ngIf="home.UserProjectById?.length > 0; else noProjects">
+        <div *ngFor="let project of home.UserProjectById">
+          <div class="experience-item">
+            <div class="experience-header">
+              <strong>{{ project.userProjectsTitle ? project.userProjectsTitle : 'Please add a title for your project' }}</strong>
+            </div>
+            <p>{{ project.userProjectDiscription ? project.userProjectDiscription : 'Please add a description for your project' }}</p>
           </div>
-          <p>{{ project.userProjectDiscription }}</p>
         </div>
       </div>
+      <ng-template #noProjects>
+        <p>Please add your projects.</p>
+      </ng-template>
     </div>
-
+  
     <div class="resume-section">
       <h4>TECHNICAL SKILLS</h4>
       <ul class="skills-list">
-        <li *ngFor="let skill of home.UserSkillByUserId">{{ skill.skillName }}</li>
+        <ng-container *ngIf="home.UserSkillByUserId?.length > 0; else noSkills">
+          <li *ngFor="let skill of home.UserSkillByUserId">
+            {{ skill.skillName ? skill.skillName : 'Please add a skill name' }}
+          </li>
+        </ng-container>
       </ul>
+      <ng-template #noSkills style="margin-top: 300px !important;">
+        <p>Please add your technical skills.</p>
+      </ng-template>
     </div>
-
+  
     <div class="resume-section">
       <h4>EDUCATION</h4>
-      <ul>
-        <li *ngFor="let edu of home.UserEducationById">
-          {{ edu.certificationName }} - {{ edu.universityName }} ({{ edu.userExperienceDateFrom | date }}- {{
-          edu.userExperienceDateTo| date }})
-        </li>
-      </ul>
+      <div *ngIf="home.UserEducationById?.length > 0; else noEducation">
+        <ul>
+          <li *ngFor="let edu of home.UserEducationById">
+            {{ edu.certificationName ? edu.certificationName : 'Please add a certification name' }} - 
+            {{ edu.universityName ? edu.universityName : 'Please add a university name' }} 
+            ({{ edu.userExperienceDateFrom ? (edu.userExperienceDateFrom | date) : 'Start Date Not Provided' }} - 
+            {{ edu.userExperienceDateTo ? (edu.userExperienceDateTo | date) : 'End Date Not Provided' }})
+          </li>
+        </ul>
+      </div>
+      <ng-template #noEducation>
+        <p>Please add your education details.</p>
+      </ng-template>
     </div>
   </div>
 

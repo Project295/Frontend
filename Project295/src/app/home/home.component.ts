@@ -38,14 +38,24 @@ export class HomeComponent implements OnInit {
     this.getPostStatus()
   }
 
-  getAllPosts() {
-    this.homeService.getAllPosts().subscribe((result: any) => {
-      this.homePosts = result;
-      this.toastr.success("Get all post successfully");
-    }, error => {
-      this.toastr.error("Something wronge!!");
-    });
+  getAllPosts(): void {
+    this.homeService.getAllPosts().subscribe(
+      (result: any) => {
+        if (result && Array.isArray(result)) {
+          this.homePosts = result.sort((a: any, b: any) => 
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        } else {
+          this.toastr.warning('No posts available at the moment.');
+          this.homePosts = [];
+        }
+      },
+      (error) => {
+        this.toastr.error('Failed to fetch posts. Please try again later.');
+      }
+    );
   }
+  
   timeAgo(dateString: string): string {
     const now = new Date();
     const postDate = new Date(dateString);

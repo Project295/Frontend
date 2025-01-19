@@ -6,7 +6,7 @@
       <a routerLink="/home" routerLinkActive="active" class="nav-icon ">
         <i class="fas fa-home"></i>
       </a>
-      <a routerLink="/profile" routerLinkActive="active" class="nav-icon">
+      <a *ngIf="userId" routerLink="/profile" routerLinkActive="active" class="nav-icon">
         <i class="fas fa-user"></i>
       </a>
       <a routerLink="/contactUs" routerLinkActive="active" class="nav-icon">
@@ -17,16 +17,16 @@
       </a>
     </div>
     <div class="navbar-right">
-        <div class="profile">
+        <div class="profile" *ngIf="userId">
           <img [src]="userProfile?.personalImagePath"  alt="Profile Picture">
           <span>{{userProfile?.firstName}} {{userProfile?.lastName}}</span>
         </div>
-        <div class="nav-icon" (click)="toggleDropdown()">
+        <div *ngIf="userId" class="nav-icon" (click)="toggleDropdown()">
           <i class="fas fa-caret-down"></i>
         </div>
       
         <!-- Dropdown Menu -->
-        <div class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
+        <div *ngIf="userId"  class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}">
          <a routerLink="/profile" routerLinkActive="active">Profile</a>
          <a routerLink="/updateProfile" routerLinkActive="active">Update profile</a>
          <a (click)="logout()">Log Out</a>
