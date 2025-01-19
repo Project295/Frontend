@@ -9,6 +9,7 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { OthersResumeComponent } from './others-resume/others-resume.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path:"aboutUs",
     component:AboutUsComponent
+ },
+  {
+    path: "resume/:id",
+    component: OthersResumeComponent
   },
   {
     path:'security',

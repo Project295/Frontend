@@ -8,6 +8,7 @@ import { userPosts } from '../dto/userPostsDTO';
 import { UpdatePostDTO } from '../dto/UpdatePostDTO';
 import { postStatusDTO } from '../dto/postTypeDTO';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otherprofile',
@@ -19,10 +20,13 @@ export class OtherprofileComponent {
     private homeService: HomeService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+     private router: Router
+
   ) { }
   complaintDescription: string = '';
   ReportedPostId: number =0;
+
 
   userId!: number;
   userProfile: userProfile | null = null;
@@ -130,4 +134,10 @@ export class OtherprofileComponent {
       alert('Please enter a description for your complaint.');
     }
   }
+}
+
+goToResume(){
+  this.router.navigate(['resume/',this.userId]);
+
+}
 }

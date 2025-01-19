@@ -25,7 +25,6 @@ constructor(private router: Router , private homeService : HomeService, private 
     })
   }
 
-
   logout() {
     localStorage.clear(); 
     this.router.navigate(['/security/sign-in']);
