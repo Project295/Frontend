@@ -21,11 +21,11 @@ export class OtherprofileComponent {
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-     private router: Router
+    private router: Router
 
   ) { }
   complaintDescription: string = '';
-  ReportedPostId: number =0;
+  ReportedPostId: number = 0;
 
 
   userId!: number;
@@ -108,7 +108,7 @@ export class OtherprofileComponent {
     }
 
   }
-  openReport(postId : number){
+  openReport(postId: number) {
     this.ReportedPostId = postId;
     const dialogRef = this.dialog.open(this.reportTemplate, {
       width: '400px',
@@ -116,7 +116,7 @@ export class OtherprofileComponent {
   }
   cancelReport() {
     this.ReportedPostId = 0;
-    this.complaintDescription = ''; 
+    this.complaintDescription = '';
     this.dialog.closeAll();
   }
   sendReport() {
@@ -134,10 +134,12 @@ export class OtherprofileComponent {
       alert('Please enter a description for your complaint.');
     }
   }
+
+  goToResume(){
+    this.router.navigate(['resume/', this.userId]);
+  
+  }
 }
 
-goToResume(){
-  this.router.navigate(['resume/',this.userId]);
 
-}
-}
+

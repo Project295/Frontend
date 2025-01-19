@@ -1,51 +1,61 @@
 
-<div class="container mt-5">
+<app-navbar></app-navbar>
+<div class="container mt-5" *ngIf="!isCVEmpty(); else noCVTemplate" style="margin-top: 90px !important;">
+  <div class="resume-header text-center" *ngIf="userProfile?.firstName || userProfile?.lastName || userProfile?.jobTitle || userProfile?.phoneNumber || userProfile?.userName || userProfile?.address">
+    <h1>{{ userProfile?.firstName }} {{ userProfile?.lastName }}</h1>
+    <h3>{{ userProfile?.jobTitle }}</h3>
+    <p>
+      {{ userProfile?.phoneNumber }} | 
+      {{ userProfile?.userName }} | 
+      {{ userProfile?.address }}
+    </p>
+  </div>
 
-    <div class="resume-header text-center">
-      <h1>{{userProfile?.firstName}} {{userProfile?.lastName}}</h1>
-      <h3>{{userProfile?.jobTitle}}</h3>
-      <p>{{ userProfile?.phoneNumber }} | {{ userProfile?.userName }} | {{ userProfile?.address }}</p>
-    </div>
-  
-    <div>
-      <div class="resume-section">
-        <h4>EXPERIENCES</h4>
-        <div *ngFor="let experience of home.UserExperienceById">
-          <div class="experience-item">
-            <div class="experience-header">
-              <strong>{{ experience.userExperienceTitle }}</strong>
-              <span>({{ experience.userExperienceDateFrom | date }}- {{ experience.userExperienceDateTo| date }})</span>
-            </div>
-            <p>{{ experience.userExperienceDiscription }}</p>
-          </div>
+  <div *ngIf="home.UserExperienceById?.length > 0" class="resume-section">
+    <h4>EXPERIENCES</h4>
+    <div *ngFor="let experience of home.UserExperienceById">
+      <div class="experience-item">
+        <div class="experience-header">
+          <strong>{{ experience.userExperienceTitle }}</strong>
+          <span>({{ experience.userExperienceDateFrom | date }} - {{ experience.userExperienceDateTo | date }})</span>
         </div>
-      </div>
-  
-      <div class="resume-section">
-        <h4>PROJECTS</h4>
-        <div *ngFor="let project of home.UserProjectById">
-          <div class="experience-item">
-            <div class="experience-header">
-              <strong>{{ project.userProjectsTitle }}</strong>
-            </div>
-            <p>{{ project.userProjectDiscription }}</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="resume-section">
-        <h4>TECHNICAL SKILLS</h4>
-        <ul class="skills-list"> 
-          <li *ngFor="let skill of home.UserSkillByUserId">{{ skill.skillName }}</li>
-        </ul>
-      </div>
-  
-      <div class="resume-section">
-        <h4>EDUCATION</h4>
-        <ul>
-          <li *ngFor="let edu of home.UserEducationById">
-            {{ edu.certificationName }} - {{ edu.universityName }} ({{ edu.userExperienceDateFrom | date }}- {{ edu.userExperienceDateTo| date }})
-          </li>
-        </ul>
+        <p>{{ experience.userExperienceDiscription }}</p>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="home.UserProjectById?.length > 0" class="resume-section">
+    <h4>PROJECTS</h4>
+    <div *ngFor="let project of home.UserProjectById">
+      <div class="experience-item">
+        <div class="experience-header">
+          <strong>{{ project.userProjectsTitle }}</strong>
+        </div>
+        <p>{{ project.userProjectDiscription }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="home.UserSkillByUserId?.length > 0" class="resume-section">
+    <h4>TECHNICAL SKILLS</h4>
+    <ul class="skills-list">
+      <li *ngFor="let skill of home.UserSkillByUserId">{{ skill.skillName }}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="home.UserEducationById?.length > 0" class="resume-section">
+    <h4>EDUCATION</h4>
+    <ul>
+      <li *ngFor="let edu of home.UserEducationById">
+        {{ edu.certificationName }} - {{ edu.universityName }} 
+        ({{ edu.userExperienceDateFrom | date }} - {{ edu.userExperienceDateTo | date }})
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #noCVTemplate style="margin-top: 300px !important;">
+  <div class="container text-center mt-5">
+    <h3>There is no CV available</h3>
+  </div>
+</ng-template>
